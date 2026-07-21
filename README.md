@@ -14,8 +14,8 @@ FreshBite is a fully functional online food ordering platform where users can br
 
 ## 🌐 Live Demo
 
-🔗 [View Live Website](https://your-username.github.io/freshbite)  
-📽️ [Watch Demo Video](https://youtube.com/your-demo-link)
+🔗 [View Live Website](https://github.com/yogeshkohli590/FreshBite---Online-Food-Ordering)  
+📽️ [Watch Demo Video](https://youtu.be/sM7458Qu4tM?si=N8SFQ1jaCC9O3Gue)
 
 ---
 
@@ -197,7 +197,7 @@ localStorage.setItem('freshbite_cart', JSON.stringify(cart));
 
 ## 👨‍💻 Author
 
-**[Your Name]**  
+**[Yogesh kohli]**  
 Free Web Development Internship Online  
 Data Alcott Systems | [www.dataalcott.com](http://www.dataalcott.com)
 
@@ -210,3 +210,6 @@ This project is created as part of the Free Web Development Internship Online pr
 ---
 
 *Made with ❤️ for Data Alcott Systems FreshBite Internship Task*
+
+## blog
+link: https://www.freeinternships.in/student/preview_my_blog_post.php?id=107
