@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshBite - Online Food Ordering | Order Fresh Food Online</title>
+    <meta name="description" content="FreshBite - Order delicious food online from top restaurants. Fast delivery, great prices!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-pizza-slice"></i>
+                <span>FreshBite</span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#restaurants" class="nav-link">Restaurants</a></li>
+                <li><a href="#menu" class="nav-link">Menu</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#cart" class="nav-link cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    Cart <span class="cart-count" id="cart-count">0</span>
+                </a></li>
+                <li><a href="#account" class="nav-link btn-account">
+                    <i class="fas fa-user"></i> Account
+                </a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Delicious Food Delivered to Your Door</h1>
+            <p class="hero-subtitle">Order from the best restaurants in town. Fast, fresh, and flavorful!</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">Order Now</a>
+                <a href="#restaurants" class="btn btn-secondary">Browse Restaurants</a>
+            </div>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search for food, restaurants...">
+                    <button class="btn-search" onclick="searchFood()">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="categories-section">
+            <div class="container">
+                <h2 class="section-title">Popular Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card" onclick="filterByCategory('Pizza')">
+                        <div class="category-icon">🍕</div>
+                        <h3>Pizza</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('Burgers')">
+                        <div class="category-icon">🍔</div>
+                        <h3>Burgers</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('Pasta')">
+                        <div class="category-icon">🍝</div>
+                        <h3>Pasta</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('Sushi')">
+                        <div class="category-icon">🍣</div>
+                        <h3>Sushi</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('Desserts')">
+                        <div class="category-icon">🍰</div>
+                        <h3>Desserts</h3>
+                    </div>
+                    <div class="category-card" onclick="filterByCategory('Drinks')">
+                        <div class="category-icon">🥤</div>
+                        <h3>Drinks</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special Offers -->
+        <div class="offers-section">
+            <div class="container">
+                <h2 class="section-title">Special Offers Today</h2>
+                <div class="offers-grid">
+                    <div class="offer-card">
+                        <div class="offer-badge">50% OFF</div>
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400" alt="Pizza Offer">
+                        <h3>Pizza Bonanza</h3>
+                        <p>Get 50% off on all pizzas</p>
+                        <span class="offer-code">Code: PIZZA50</span>
+                    </div>
+                    <div class="offer-card">
+                        <div class="offer-badge">Buy 1 Get 1</div>
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400" alt="Burger Offer">
+                        <h3>Burger Blast</h3>
+                        <p>Buy 1 Get 1 Free on burgers</p>
+                        <span class="offer-code">Code: BOGO</span>
+                    </div>
+                    <div class="offer-card">
+                        <div class="offer-badge">30% OFF</div>
+                        <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400" alt="Dessert Offer">
+                        <h3>Sweet Treats</h3>
+                        <p>30% off on all desserts</p>
+                        <span class="offer-code">Code: SWEET30</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurants Section -->
+    <section id="restaurants" class="section">
+        <div class="container">
+            <h2 class="section-title">Top Restaurants</h2>
+            
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active" onclick="filterRestaurants('all')">All</button>
+                <button class="filter-btn" onclick="filterRestaurants('rating')">Top Rated</button>
+                <button class="filter-btn" onclick="filterRestaurants('fast')">Fast Delivery</button>
+                <button class="filter-btn" onclick="filterRestaurants('budget')">Budget Friendly</button>
+            </div>
+
+            <div class="restaurants-grid" id="restaurants-grid">
+                <!-- Restaurants will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Menu</h2>
+            
+            <!-- Dietary Filters -->
+            <div class="dietary-filters">
+                <button class="diet-btn active" onclick="filterByDiet('all')">
+                    <i class="fas fa-utensils"></i> All
+                </button>
+                <button class="diet-btn" onclick="filterByDiet('veg')">
+                    <i class="fas fa-leaf"></i> Vegetarian
+                </button>
+                <button class="diet-btn" onclick="filterByDiet('nonveg')">
+                    <i class="fas fa-drumstick-bite"></i> Non-Veg
+                </button>
+                <button class="diet-btn" onclick="filterByDiet('vegan')">
+                    <i class="fas fa-seedling"></i> Vegan
+                </button>
+                <button class="diet-btn" onclick="filterByDiet('glutenfree')">
+                    <i class="fas fa-wheat"></i> Gluten-Free
+                </button>
+            </div>
+
+            <div class="menu-grid" id="menu-grid">
+                <!-- Menu items will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Section -->
+    <section id="cart" class="section cart-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Shopping Cart</h2>
+            <div class="cart-content">
+                <div class="cart-items" id="cart-items">
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                        <a href="#menu" class="btn btn-primary">Browse Menu</a>
+                    </div>
+                </div>
+                <div class="cart-summary" id="cart-summary" style="display: none;">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee:</span>
+                        <span id="delivery-fee">$2.99</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (10%):</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="coupon-input">
+                        <input type="text" id="coupon-code" placeholder="Enter coupon code">
+                        <button onclick="applyCoupon()">Apply</button>
+                    </div>
+                    <div class="summary-row discount-row" id="discount-row" style="display: none;">
+                        <span>Discount:</span>
+                        <span id="discount">-$0.00</span>
+                    </div>
+                    <hr>
+                    <div class="summary-row total-row">
+                        <span>Total:</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                    <button class="btn btn-primary btn-block" onclick="proceedToCheckout()">
+                        Proceed to Checkout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section id="checkout" class="section checkout-section" style="display: none;">
+        <div class="container">
+            <h2 class="section-title">Checkout</h2>
+            <div class="checkout-content">
+                <div class="checkout-form">
+                    <h3>Delivery Details</h3>
+                    <form id="checkout-form">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" id="customer-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" id="customer-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" id="customer-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Address *</label>
+                            <textarea id="delivery-address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Delivery Time</label>
+                            <select id="delivery-time">
+                                <option>ASAP (30-45 mins)</option>
+                                <option>1 Hour</option>
+                                <option>2 Hours</option>
+                                <option>Schedule for later</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Method</label>
+                            <div class="payment-methods">
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="card" checked>
+                                    <i class="fas fa-credit-card"></i> Credit/Debit Card
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="cash">
+                                    <i class="fas fa-money-bill"></i> Cash on Delivery
+                                </label>
+                                <label class="payment-option">
+                                    <input type="radio" name="payment" value="upi">
+                                    <i class="fas fa-mobile-alt"></i> UPI
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Special Instructions</label>
+                            <textarea id="special-instructions" rows="2" placeholder="Any special requests?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Place Order
+                        </button>
+                    </form>
+                </div>
+                <div class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items"></div>
+                    <hr>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="checkout-subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery:</span>
+                        <span id="checkout-delivery">$2.99</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax:</span>
+                        <span id="checkout-tax">$0.00</span>
+                    </div>
+                    <div class="summary-row total-row">
+                        <span>Total:</span>
+                        <span id="checkout-total">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Account Section -->
+    <section id="account" class="section account-section" style="display: none;">
+        <div class="container">
+            <div class="account-content">
+                <!-- Login Form -->
+                <div class="login-form" id="login-form">
+                    <h2>Welcome Back!</h2>
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                    <p class="form-footer">
+                        Don't have an account? 
+                        <a href="#" onclick="showRegister(); return false;">Register here</a>
+                    </p>
+                </div>
+
+                <!-- Register Form -->
+                <div class="register-form" id="register-form" style="display: none;">
+                    <h2>Create Account</h2>
+                    <form onsubmit="handleRegister(event)">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="register-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="register-phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="register-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                    <p class="form-footer">
+                        Already have an account? 
+                        <a href="#" onclick="showLogin(); return false;">Login here</a>
+                    </p>
+                </div>
+
+                <!-- User Profile -->
+                <div class="user-profile" id="user-profile" style="display: none;">
+                    <h2>My Account</h2>
+                    <div class="profile-info">
+                        <h3>Profile Information</h3>
+                        <p><strong>Name:</strong> <span id="profile-name"></span></p>
+                        <p><strong>Email:</strong> <span id="profile-email"></span></p>
+                        <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
+                    </div>
+                    <div class="order-history">
+                        <h3>Order History</h3>
+                        <div id="order-history-list">
+                            <p class="no-orders">No orders yet</p>
+                        </div>
+                    </div>
+                    <div class="saved-addresses">
+                        <h3>Saved Addresses</h3>
+                        <div id="saved-addresses-list">
+                            <p class="no-addresses">No saved addresses</p>
+                        </div>
+                    </div>
+                    <div class="wishlist">
+                        <h3>My Wishlist</h3>
+                        <div id="wishlist-items" class="menu-grid">
+                            <p class="no-wishlist">No items in wishlist</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" onclick="handleLogout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title">About FreshBite</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Founded in 2020, FreshBite started with a simple mission: to connect food lovers with the best local restaurants and deliver delicious meals right to their doorstep. We believe that great food brings people together and makes every moment special.</p>
+                    <p>Today, we partner with over 500 restaurants and have served more than 100,000 happy customers. Our commitment to quality, speed, and customer satisfaction drives everything we do.</p>
+                    
+                    <h3>Why Choose FreshBite?</h3>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Fast Delivery</h4>
+                            <p>Average delivery time of 30 minutes</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check-circle"></i>
+                            <h4>Quality Food</h4>
+                            <p>Fresh ingredients, prepared with care</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <h4>24/7 Support</h4>
+                            <p>We're here to help anytime</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-tags"></i>
+                            <h4>Best Prices</h4>
+                            <p>Great deals and discounts</p>
+                        </div>
+                    </div>
+
+                    <h3>Our Awards</h3>
+                    <div class="awards">
+                        <div class="award">🏆 Best Food Delivery App 2025</div>
+                        <div class="award">⭐ Customer Choice Award 2024</div>
+                        <div class="award">🎖️ Excellence in Service 2023</div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600" alt="FreshBite Team">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Food Street, Culinary District<br>Chennai, Tamil Nadu 600001</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 1800-123-4567<br>+91 98765-43210</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@freshbite.com<br>info@freshbite.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Monday - Sunday: 24/7<br>We never close!</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form onsubmit="handleContactForm(event)">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Your Phone">
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.886539092!2d80.04419524999999!3d13.0826802!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1234567890"
+                    width="100%" 
+                    height="400" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FreshBite</h3>
+                    <p>Your favorite food, delivered fresh and fast to your doorstep.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#restaurants">Restaurants</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe for exclusive offers!</p>
+                    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FreshBite. All rights reserved. | Made with ❤️ for Data Alcott Systems</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Order Success Modal -->
+    <div class="modal" id="order-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Placed Successfully!</h2>
+                <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">✓</div>
+                <p>Your order has been confirmed!</p>
+                <p><strong>Order ID:</strong> <span id="order-id"></span></p>
+                <p><strong>Estimated Delivery:</strong> <span id="estimated-time"></span></p>
+                <div class="order-tracking">
+                    <h3>Track Your Order</h3>
+                    <div class="tracking-steps">
+                        <div class="tracking-step active">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Order Placed</p>
+                        </div>
+                        <div class="tracking-step">
+                            <i class="fas fa-utensils"></i>
+                            <p>Preparing</p>
+                        </div>
+                        <div class="tracking-step">
+                            <i class="fas fa-motorcycle"></i>
+                            <p>On the Way</p>
+                        </div>
+                        <div class="tracking-step">
+                            <i class="fas fa-home"></i>
+                            <p>Delivered</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="closeOrderModal()">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content product-detail">
+            <span class="close-modal" onclick="closeProductModal()">&times;</span>
+            <div id="product-detail-content"></div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
