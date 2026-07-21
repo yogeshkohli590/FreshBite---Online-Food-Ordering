@@ -16,6 +16,8 @@ FreshBite is a fully functional online food ordering platform where users can br
 
 🔗 [View Live Website](https://yogeshkohli590.github.io/FreshBite---Online-Food-Ordering/)  
 📽️ [Watch Demo Video](https://youtu.be/sM7458Qu4tM?si=N8SFQ1jaCC9O3Gue)
+project report - https://docs.google.com/document/d/1AVbdnPNN9xy2cG8Avn1AMRLBWqTAYzpS/edit?usp=drivesdk&ouid=117533486982418298096&rtpof=true&sd=true
+photos - https://drive.google.com/drive/folders/1eOKmoC4CMWi5Ng0SVeJNXMSy8Mp_jTLe
 
 ---
 
